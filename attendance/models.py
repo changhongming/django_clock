@@ -8,8 +8,8 @@ class SubmitAttendance(models.Model):
         db_table = 'attendance'
 
     PLACES = (
-        (1, 'GRC 5F'),
-        (2, 'GRC 4F'),
+        (1, 'GRC'),
+        #(2, 'GRC 4F'),
     )
     IN_OUT = (
         (1, 'IN'),
