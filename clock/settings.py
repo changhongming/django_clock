@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ['damp-shelf-60093.herokuapp.com','localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    #'channels',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,8 +75,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'clock.wsgi.application'
-#ASGI_APPLICATION = 'clock.wsgi.application'
+#WSGI_APPLICATION = 'clock.wsgi.application'
+ASGI_APPLICATION = 'clock.asgi.application'
 
 
 # Database
