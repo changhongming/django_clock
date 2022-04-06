@@ -30,13 +30,14 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = ['damp-shelf-60093.herokuapp.com','localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['damp-shelf-60093.herokuapp.com','localhost', '127.0.0.1','*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'channels',
+    #'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,9 +76,23 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'clock.wsgi.application'
+WSGI_APPLICATION = 'clock.wsgi.application'
 ASGI_APPLICATION = 'clock.asgi.application'
+#ASGI_APPLICATION = "clock.routing.application"
 
+CHANNEL_LAYERS = {
+      'default': {
+          'BACKEND': 'channels_redis.core.RedisChannelLayer',
+          'CONFIG': {
+              'hosts': [
+            ('localhost', 6379),     #可以配置多個通道層。然而，大多數專案將只使用一個“預設”通道層。
+              #如果你是使用Docker安裝執行redis的請註釋下面的配置
+            #('redis_server_name', 6379),
+              #如果你是使用Daphne執行的請註釋掉localhost那一行配置
+        ],
+          },
+      },
+  }
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

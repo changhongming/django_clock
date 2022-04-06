@@ -45,3 +45,6 @@ class ResultView(View):
         }
         return render(request, 'attendance/result.html', context)
 result = ResultView.as_view()
+
+def test(request):
+    return render(request,'test.html')

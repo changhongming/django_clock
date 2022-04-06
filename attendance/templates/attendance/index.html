@@ -17,6 +17,63 @@
                     </script>
                 <p>出勤場所：<input type="hidden" name="place">{{ form.place }}</p>
                 <p>IN/OUT：<input type="hidden" name="in_out">{{ form.in_out }}</p>
+                <table>
+                    <caption>recond</caption>
+                    <tr>
+                      <th>NAME</th>
+                      <th>ID</th>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                </table>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Websocket測試</title>
+                    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+                    <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+                    <script src="/static/layui/layui.js"></script>
+              </head>
+              <body style="margin: auto">
+                <script>
+                    if ("WebSocket" in window) {
+                        // 開啟一個 web socket
+                        var ws = new WebSocket( "ws://"+ window.location.host + "/ws/test_async");
+                        console.log("ws:" + window.location.host + "/ws/test_async")
+                        console.log('ws',ws)
+                        ws.onopen = function () {
+                            // Web Socket 已連線上，使用 send() 方法傳送資料
+                            alert("連結成功")
+                            ws.send("傳送訊息");
+                            console.log('onopen')
+                            {alert("資料傳送中...");}
+                        };
+                        ws.onmessage = function (evt) {
+                            var received_msg = evt.data;
+                            {alert("資料已接收...");}
+                            console.log("資料:" + received_msg)
+                        };
+                        ws.onclose = function () {
+                            // 關閉 websocket
+                            alert("連結關閉，請重試")
+                            console.log("連線已關閉...");
+                        };
+                    }
+                    else {
+                        // 瀏覽器不支援 WebSocket
+                        alert("您的瀏覽器不支援 WebSocket!");
+                    }
+                </script>
+
 
  
 
