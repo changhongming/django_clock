@@ -47,8 +47,8 @@
                 <script>
                     if ("WebSocket" in window) {
                         // 開啟一個 web socket
-                        var ws = new WebSocket( "ws://"+ window.location.host + "/ws/test_async");
-                        console.log("ws:" + window.location.host + "/ws/test_async")
+                        var ws = new WebSocket( "ws://"+ window.location.host + "/ws/attendance");
+                        console.log("ws:" + window.location.host + "/ws/attendance")
                         console.log('ws',ws)
                         ws.onopen = function () {
                             // Web Socket 已連線上，使用 send() 方法傳送資料

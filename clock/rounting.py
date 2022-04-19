@@ -1,4 +1,4 @@
-from channels.routing import ProtocolTypeRouter,URLRouter
+'''from channels.routing import ProtocolTypeRouter,URLRouter
 import os
 from channels.auth import AuthMiddlewareStack
 import attendance.routing
@@ -15,4 +15,17 @@ application = ProtocolTypeRouter({
             attendance.routing.websocket_urlpatterns
         )
     )
+})'''
+
+from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter, URLRouter
+import attendance.routing
+application = ProtocolTypeRouter({
+  # (http->django views is added by default)
+  'websocket': AuthMiddlewareStack(
+    URLRouter(
+      attendance.routing.websocket_urlpatterns
+    )
+  ),
 })
+

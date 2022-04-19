@@ -15,5 +15,13 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'clock.settings')
 
 application = get_asgi_application()
 
+'''import os
+import django
+from channels.routing import get_default_application
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'clock.settings')
+django.setup()
+application = get_default_application()'''
+
 
 
